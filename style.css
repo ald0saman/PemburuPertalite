@@ -1,0 +1,124 @@
+/* ==========================================================================
+   PEMBURU PERTALITE — SOFTWARE ENGINEERING PORTFOLIO
+   Design Tokens & Base Overrides
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Variables (Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Light Mode (Default) */
+  --bg-canvas: #FFFFFF;
+  --bg-surface: #FAFAFA;
+  --bg-surface-hover: #F4F4F5;
+  --border-subtle: #E4E4E7;
+  --border-strong: #18181B;
+  --text-primary: #09090B;
+  --text-secondary: #71717A;
+  --accent-solid: #18181B;
+  --accent-contrast: #FFFFFF;
+  --state-error: #EF4444;
+  --state-success: #10B981;
+}
+
+.dark {
+  /* Dark Mode */
+  --bg-canvas: #09090B;
+  --bg-surface: #121214;
+  --bg-surface-hover: #18181B;
+  --border-subtle: #27272A;
+  --border-strong: #FAFAFA;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --accent-solid: #FAFAFA;
+  --accent-contrast: #09090B;
+  --state-error: #F87171;
+  --state-success: #34D399;
+}
+
+/* --------------------------------------------------------------------------
+   2. Base & Typography Smoothing
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Accessible focus ring utility matching brief */
+*:focus-visible {
+  outline: 2px solid var(--border-strong);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Micro-Animations & Utilities (Step 4)
+   -------------------------------------------------------------------------- */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   4. Modal Micro-Animations (Step 9)
+   -------------------------------------------------------------------------- */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-content {
+  animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   5. Form Validation States (Step 10)
+   -------------------------------------------------------------------------- */
+.input-error {
+  border-color: var(--state-error) !important;
+}
+
+.input-error:focus {
+  outline: 2px solid var(--state-error) !important;
+  outline-offset: 2px;
+}
+
+
